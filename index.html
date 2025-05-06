@@ -29,29 +29,14 @@
         }
 
         .ripple-calculator-section {
-            /* display: flex;
-            height: 100vh;
-            justify-content: center;
             align-items: center;
-            background-color: #efefee; */
-            /* display: flex; */
-            align-items: center;
-            /* justify-content: center; */
-            min-height: 300px;
-            /* Set a minimum height */
-            /* padding: 20px; */
+            min-height: 568px;
         }
 
         .ripple-calculator-section .ripple-calculator-container {
-            /* width: 65%;
-            min-width: 600px;
-            max-width: 1000px;
-            height: 65%;
-            margin: 0 auto; */
             background-color: #fff;
             padding: 1.8rem;
             height: 100%;
-            /* overflow-y: scroll; */
         }
 
         .ripple-calculator-section .ripple-calculator-heading-text {
@@ -68,7 +53,6 @@
 
         .ripple-calculator-section .ripple-calculator-progress-bar-section .row {
             display: flex;
-            /* flex-wrap: wrap; */
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.3rem;
@@ -119,6 +103,9 @@
 
         .ripple-calculator-section .annual-savings-container {
             margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .ripple-calculator-section .annual-savings-container .annual-savings-text {
@@ -128,6 +115,8 @@
         .ripple-calculator-section .annual-savings-container .annual-savings-value {
             color: var(--primary-color);
             font-weight: 700;
+            font-size: clamp(1.7rem, 5vw, 3.2rem);
+            margin-right: 11%;
         }
 
         .ripple-calculator-section .booking-button-container {
@@ -152,6 +141,14 @@
             cursor: pointer;
             color: #fff;
         }
+
+
+        @media (max-width: 1024px) {
+            .ripple-calculator-section .annual-savings-container .annual-savings-value {
+                margin-right: 5%;
+            }
+        }
+
     </style>
 </head>
 
@@ -170,7 +167,7 @@
                     </div>
                     <div class="ripple-calculator-progress-container">
                         <div class="controls">
-                            <input type="range" min="0" max="10000" value="0" id="slider1" class="custom-range"
+                            <input type="range" min="5" max="3060" value="0" id="slider1" class="custom-range"
                                 oninput="updateProgress(this.value,'bar1')" />
                         </div>
                         <div class="bar bar1" id="bar1">0</div>
@@ -183,7 +180,7 @@
                     </div>
                     <div class="ripple-calculator-progress-container">
                         <div class="controls">
-                            <input type="range" min="0" max="100" value="0" id="slider2" class="custom-range"
+                            <input type="range" min="1" max="50" value="0" id="slider2" class="custom-range"
                                 oninput="updateProgress(this.value,'bar2')" />
                         </div>
                         <div class="bar bar2" id="bar2">0</div>
@@ -195,7 +192,7 @@
                     </div>
                     <div class="ripple-calculator-progress-container">
                         <div class="controls">
-                            <input type="range" min="0" max="1000" value="0" id="slider3" class="custom-range"
+                            <input type="range" min="5" max="1005" value="0" id="slider3" class="custom-range"
                                 oninput="updateProgress(this.value,'bar3')" />
                         </div>
                         <div class="bar bar3" id="bar3">0</div>
@@ -208,16 +205,15 @@
                     </div>
                     <div class="ripple-calculator-progress-container">
                         <div class="controls">
-                            <input type="range" min="0" max="1000" value="0" id="slider4" class="custom-range"
+                            <input type="range" min="5" max="255" value="0" id="slider4" class="custom-range"
                                 oninput="updateProgress(this.value,'bar4')" />
                         </div>
                         <div class="bar bar4" id="bar4">0</div>
                     </div>
                 </div>
                 <div class="annual-savings-container">
-                    <p class="annual-savings-text">POTENTIAL ANNUAL SAVINGS <span id="annual-savings-value"
-                            class="annual-savings-value">£191,000</span>
-                    </p>
+                    <p class="annual-savings-text">POTENTIAL ANNUAL SAVINGS</p>
+                    <p id="annual-savings-value" class="annual-savings-value">£191,000</p>
                 </div>
                 <div class="booking-button-container">
                     <a href="https://calendly.com/adrian-dhia/30min" target="_blank" class="booking-button">BOOK A DEMO
@@ -229,8 +225,6 @@
 
 
     <script>
-
-
 
         function updateProgress(value, barId) {
             const bar = document.getElementById(barId);
@@ -277,9 +271,6 @@
             let promotionalBlogs = blogsPerMonth
             let gernericReports = 5
 
-
-
-
             // Individual Manuals
             let staff1Manual = 0.25 * staff1 * 12
             let staff2Manual = 0.08 * staff2 * 12
@@ -304,10 +295,6 @@
             let promotionalBlogsManual = 3 * promotionalBlogs * 12
             let gernericReportsManual = gernericReports * 12 * 0.5
 
-
-
-
-
             // Total Manuals
             let staffTotalManuals = staff1Manual + staff2Manual + staff3Manual
             let locationsTotalManuals = locations1Manual + locations2Manual
@@ -323,8 +310,6 @@
             let policyCreationTotalManuals = policyCreationManual
             let promotionalBlogsTotalManuals = promotionalBlogsManual
             let gernericReportsTotalManuals = gernericReportsManual
-
-
 
             // Individual Ripples
             let staff1Ripple = 0.05 * staff1 * 12
@@ -350,7 +335,6 @@
             let promotionalBlogsRipple = promotionalBlogs * 0.08 * 12
             let gernericReportsRipple = 0
 
-
             // Total Ripples
             let staffTotalRipples = staff1Ripple + staff2Ripple + staff3Ripple
             let locationsTotalRipples = locations1Ripple + locations2Ripple
@@ -366,7 +350,6 @@
             let policyCreationTotalRipples = policyCreationRipple
             let promotionalBlogsTotalRipples = promotionalBlogsRipple
             let gernericReportsTotalRipples = gernericReportsRipple
-
 
             let hrsManual = staffTotalManuals +
                 locationsTotalManuals +
@@ -405,7 +388,6 @@
             let annualStaffCostsManual = FTEsManual * averageFTESalary
             let annualStaffCostsRipple = FTEsRipple * averageFTESalary
 
-
             const v1 = parseInt(document.getElementById("slider1").value) || 0
             const v2 = parseInt(document.getElementById("slider2").value) || 0
             const v3 = parseInt(document.getElementById("slider3").value) || 0
@@ -423,60 +405,8 @@
             updateProgress(document.getElementById('slider4').value, 'bar4')
         };
 
-
     </script>
-
 
 </body>
 
 </html>
-
-<!-- 
-<table id="excel-table" border="1"></table>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script>
-window.columnB = [];
-window.columnC = [];
-window.columnD = [];
-
-async function loadExcel() {
-  const response = await fetch('https://anatomy.adraproductstudio.com/wp-content/uploads/2025/04/RIPPLE.BENEFITS.MODEL_.v3.1ksuppliers1.xlsx');
-  const arrayBuffer = await response.arrayBuffer();
-
-  const workbook = XLSX.read(arrayBuffer, { type: 'array' });
-  const sheetName = workbook.SheetNames[0];
-  const worksheet = workbook.Sheets[sheetName];
-  const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-
-  const table = document.getElementById('excel-table');
-  let rowIndex = 0;
-
-  jsonData.forEach((row, index) => {
-    if (index === 0) return; // Skip header row
-
-    const tr = document.createElement('tr');
-
-    const tdB = document.createElement('td');
-    tdB.textContent = row[1] || '';
-    tr.appendChild(tdB);
-    window.columnB.push(row[1] || '');
-
-    const tdC = document.createElement('td');
-    tdC.textContent = row[2] || '';
-    tr.appendChild(tdC);
-    window.columnC.push(parseFloat(row[2]) || 0);
-
-    const tdD = document.createElement('td');
-    tdD.textContent = row[3] || '';
-    tr.appendChild(tdD);
-    window.columnD.push(parseFloat(row[3]) || 0);
-
-    table.appendChild(tr);
-  });
-}
-  
-  
-
-loadExcel();
-</script> -->
