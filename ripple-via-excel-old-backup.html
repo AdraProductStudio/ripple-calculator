@@ -1,0 +1,525 @@
+<style>
+    .ripple-calculator-section * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .ripple-calculator-section :root {
+        --primary-color: #9ecc3f;
+        font-family: "Nunito", sans-serif;
+    }
+
+    .ripple-calculator-section body {
+        background-color: #efefee;
+    }
+
+    .ripple-calculator-section {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background-color: #efefee;
+    }
+
+    .ripple-calculator-section .ripple-calculator-container {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 1.8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .ripple-calculator-section .ripple-calculator-heading-text {
+        color: #9ecc3f;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 2.5rem;
+        font-size: 2.5rem !important;
+
+    }
+
+    .ripple-calculator-section .ripple-calculator-count-text {
+        font-size: 1.2rem;
+    }
+
+    .ripple-calculator-section .ripple-calculator-progress-bar-section {
+        width: 90%
+    }
+
+    .ripple-calculator-section .ripple-calculator-progress-bar-section .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.3rem;
+    }
+
+    .ripple-calculator-section .bar {
+        text-align: center;
+    }
+
+    .ripple-calculator-section .controls {
+        margin-top: 10px;
+    }
+
+    .ripple-calculator-section input[type="range"] {
+        width: 100%;
+        background-color: #d0d0d5 !important;
+    }
+
+    .ripple-calculator-section .custom-range {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 5px;
+        background: #d0d0d5;
+        /* ✅ track color */
+        border-radius: 5px;
+        outline: none;
+    }
+
+    .ripple-calculator-section .custom-range::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        background: #383949;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        margin-top: -5px;
+    }
+
+    .ripple-calculator-section .annual-savings-container {
+        margin: 3rem 0;
+    }
+
+    .ripple-calculator-section .annual-savings-container .annual-savings-text {
+        font-size: 2rem;
+    }
+
+    .ripple-calculator-section .annual-savings-container .annual-savings-value {
+        color: #9ecc3f;
+        font-weight: 700;
+    }
+
+    .ripple-calculator-section .booking-button-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .ripple-calculator-section .booking-button {
+        background-color: #E97E74;
+        color: #fff;
+        padding: 15px 30px;
+        border-radius: 30px;
+        border: 1px solid #ddd;
+        font-size: 1.3rem;
+        cursor: pointer;
+        transition: all 0.5s;
+    }
+
+    .ripple-calculator-section .booking-button:hover {
+        background-color: #ff877c;
+        cursor: pointer;
+        color: #fff;
+    }
+</style>
+</head>
+
+
+
+<!-- <section class="ripple-calculator-section">
+    <div class="ripple-calculator-container">
+        <div class="ripple-calculator-heading-container">
+            <h1 class="ripple-calculator-heading-text">Ripple Indicative Benefits Calculator</h1>
+        </div>
+
+        <div class="ripple-calculator-progress-bar-section">
+            <div class="row row1">
+                <div class="ripple-calculator-count-text-container">
+                    <p class="ripple-calculator-count-text">NUMBER OF STAFF</p>
+                </div>
+                <div class="ripple-calculator-progress-container" style="width: 60%;">
+                    <div class="controls">
+                        <input type="range" min="0" max="10000" value="0" id="slider1" class="custom-range"
+                            oninput="updateProgress(this.value,'bar1')" />
+                    </div>
+                    <div class="bar bar1" id="bar1">0</div>
+
+                </div>
+            </div>
+            <div class="row row2">
+                <div class="ripple-calculator-count-text-container">
+                    <p class="ripple-calculator-count-text">NUMBER OF LOCATIONS</p>
+                </div>
+                <div class="ripple-calculator-progress-container" style="width: 60%;">
+                    <div class="controls">
+                        <input type="range" min="0" max="100" value="0" id="slider2" class="custom-range"
+                            oninput="updateProgress(this.value,'bar2')" />
+                    </div>
+                    <div class="bar bar2" id="bar2">0</div>
+                </div>
+            </div>
+            <div class="row row3">
+                <div class="ripple-calculator-count-text-container">
+                    <p class="ripple-calculator-count-text">NUMBER OF SUPPLIERS</p>
+                </div>
+                <div class="ripple-calculator-progress-container" style="width: 60%;">
+                    <div class="controls">
+                        <input type="range" min="0" max="1000" value="0" id="slider3" class="custom-range"
+                            oninput="updateProgress(this.value,'bar3')" />
+                    </div>
+                    <div class="bar bar3" id="bar3">0</div>
+
+                </div>
+            </div>
+            <div class="row row4">
+                <div class="ripple-calculator-count-text-container">
+                    <p class="ripple-calculator-count-text">NUMBER OF CUSTOMERS</p>
+                </div>
+                <div class="ripple-calculator-progress-container" style="width: 60%;">
+                    <div class="controls">
+                        <input type="range" min="0" max="1000" value="0" id="slider4" class="custom-range"
+                            oninput="updateProgress(this.value,'bar4')" />
+                    </div>
+                    <div class="bar bar4" id="bar4">0</div>
+                </div>
+            </div>
+            <div class="annual-savings-container">
+                <p class="annual-savings-text">POTENTIAL ANNUAL SAVINGS <span id="annual-savings-value"
+                        class="annual-savings-value">£54000</span>
+                </p>
+            </div>
+            <div class="booking-button-container">
+                <a href="https://calendly.com/adrian-dhia/30min" target="_blank" class="booking-button">BOOK A DEMO </a>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<section class="ripple-calculator-section">
+    <div class="ripple-calculator-container">
+        <div class="ripple-calculator-heading-container">
+            <h1 class="ripple-calculator-heading-text">Ripple Indicative Benefits Calculator</h1>
+        </div>
+        <div class="ripple-calculator-progress-bar-section">
+            <div class="row row1">
+                <div class="ripple-calculator-count-text-container">
+                    <p class="ripple-calculator-count-text">NUMBER OF STAFF</p>
+
+                </div>
+                <div class="ripple-calculator-progress-container">
+                    <div class="controls"><input id="slider1" class="custom-range" max="3060" min="5" type="range"
+                            value="0" /></div>
+                    <div id="bar1" class="bar bar1">0</div>
+                </div>
+            </div>
+            <div class="row row2">
+                <div class="ripple-calculator-count-text-container">
+                    <p class="ripple-calculator-count-text">NUMBER OF LOCATIONS</p>
+
+                </div>
+                <div class="ripple-calculator-progress-container">
+                    <div class="controls"><input id="slider2" class="custom-range" max="50" min="1" type="range"
+                            value="0" /></div>
+                    <div id="bar2" class="bar bar2">0</div>
+                </div>
+            </div>
+            <div class="row row3">
+                <div class="ripple-calculator-count-text-container">
+                    <p class="ripple-calculator-count-text">NUMBER OF SUPPLIERS</p>
+
+                </div>
+                <div class="ripple-calculator-progress-container">
+                    <div class="controls"><input id="slider3" class="custom-range" max="1005" min="5" type="range"
+                            value="0" /></div>
+                    <div id="bar3" class="bar bar3">0</div>
+                </div>
+            </div>
+            <div class="row row4">
+                <div class="ripple-calculator-count-text-container">
+                    <p class="ripple-calculator-count-text">NUMBER OF CUSTOMERS</p>
+
+                </div>
+                <div class="ripple-calculator-progress-container">
+                    <div class="controls"><input id="slider4" class="custom-range" max="255" min="5" type="range"
+                            value="0" /></div>
+                    <div id="bar4" class="bar bar4">0</div>
+                </div>
+            </div>
+            <div class="annual-savings-container">
+                <p class="annual-savings-text">POTENTIAL ANNUAL SAVINGS</p>
+                <p id="annual-savings-value" class="annual-savings-value">£191,000</p>
+
+            </div>
+            <div class="booking-button-container"><a class="booking-button"
+                    href="https://link.pwrdly.com/widget/booking/7ZlYLrlG3W3bfMVnz0vQ" target="_blank"
+                    rel="noopener">BOOK A DEMO
+                </a></div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<script>
+
+    window.columnB = [];
+    window.columnC = [];
+    window.columnD = [];
+
+    async function loadExcel() {
+        const response = await fetch('https://useripple.io/wp-content/uploads/2025/05/RIPPLE.BENEFITS.MODEL_.v3.1ksuppliers.xlsx');
+
+
+        const arrayBuffer = await response.arrayBuffer();
+
+        const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+        let rowIndex = 0;
+
+        jsonData.forEach((row, index) => {
+            if (index === 0) return;
+
+            const tr = document.createElement('tr');
+
+            const tdB = document.createElement('td');
+            tdB.textContent = row[1] || '';
+            tr.appendChild(tdB);
+            window.columnB.push(row[1] || '');
+
+            const tdC = document.createElement('td');
+            tdC.textContent = row[2] || '';
+            tr.appendChild(tdC);
+            window.columnC.push(parseFloat(row[2]) || 0);
+
+            const tdD = document.createElement('td');
+            tdD.textContent = row[3] || '';
+            tr.appendChild(tdD);
+            window.columnD.push(parseFloat(row[3]) || 0);
+
+
+        });
+    }
+
+
+    function updateProgress(value, barId) {
+
+        const bar = document.getElementById(barId);
+        const annualSavingsValue = document.getElementById("annual-savings-value")
+        if (bar) {
+            bar.innerText = value;
+        }
+
+        let primaryStaff = document.getElementById('slider1').value
+        let primaryLocations = document.getElementById('slider2').value
+        let primarySuppliers = document.getElementById('slider3').value
+        let primaryCustomers = document.getElementById('slider4').value
+
+        // Primary constants
+        const primaryStaffPercentage = columnD[0]
+        const primaryCustomersPercentage = columnD[3]
+        const primaryVehiclesPercentage = columnD[4]
+        const hoursInADay = columnC[14]
+        const daysInFTEYear = columnC[15]
+        const averageFTESalary = columnC[13]
+        const policiesPerYear = columnC[5]
+        const blogsPerMonth = columnC[11]
+
+        let staff1 = primaryStaff * primaryStaffPercentage
+        let staff2 = primaryStaff * primaryStaffPercentage
+        let staff3 = primaryStaff;
+        let locations1 = primaryLocations
+        let locations2 = primaryLocations
+        let suppliers1 = primarySuppliers
+        let suppliers2 = primarySuppliers
+        let suppliers3 = primarySuppliers
+        let suppliers4 = primarySuppliers
+        let RFP_RFQ = columnC[29]
+        let vehicle1 = columnC[30]
+        let vehicle2 = columnC[31]
+        let customers1 = primaryCustomers * primaryCustomersPercentage
+        let customers2 = primaryCustomers * primaryCustomersPercentage
+        let energyRebateInvoices = columnC[34]
+        let regReportPerYear = columnC[35]
+        let investorsDataRequests = columnC[36]
+        let lendersSBTI = columnC[37] || 0
+        let insurerKPIs = columnC[38]
+        let policyCreation = policiesPerYear
+        let promotionalBlogs = blogsPerMonth
+        let gernericReports = columnC[41]
+
+
+
+
+        // Individual Manuals
+        let staff1Manual = 0.25 * staff1 * 12
+        let staff2Manual = 0.08 * staff2 * 12
+        let staff3Manual = 0.25 * staff3 * 4
+        let locations1Manual = 4 * locations1
+        let locations2Manual = 4 * locations2
+        let suppliers1Manual = 0.25 * suppliers1
+        let suppliers2Manual = 4 * 0.08 * suppliers2
+        let suppliers3Manual = 0.5 * suppliers3
+        let suppliers4Manual = 0.5 * suppliers4
+        let RFP_RFQ_Manual = 12 * (RFP_RFQ * 24)
+        let vehicles1Manual = vehicle1 * 4
+        let vehicles2Manual = vehicle2 * 4
+        let customers1Manual = 4 * customers1
+        let customers2Manual = 4 * customers2
+        let energyRebateInvoicesManual = energyRebateInvoices * 10 * 12
+        let regReportPerYearManual = regReportPerYear * 80
+        let investorsDataRequestsManual = investorsDataRequests * 16 * 4
+        let lendersSBTIManual = lendersSBTI
+        let insurerKPIsManual = insurerKPIs * 32 * 4
+        let policyCreationManual = 4 * policyCreation
+        let promotionalBlogsManual = 3 * promotionalBlogs * 12
+        let gernericReportsManual = gernericReports * 12 * 0.5
+
+
+
+
+
+        // Total Manuals
+        let staffTotalManuals = staff1Manual + staff2Manual + staff3Manual
+        let locationsTotalManuals = locations1Manual + locations2Manual
+        let suppliersTotalManuals = suppliers1Manual + suppliers2Manual + suppliers3Manual + suppliers4Manual
+        let RFP_RFQ_Total_Manuals = RFP_RFQ_Manual
+        let vehiclesTotalManuals = vehicles1Manual + vehicles2Manual
+        let customersTotalManuals = customers1Manual + customers2Manual
+        let energyRebateInvoicesTotalManuals = energyRebateInvoicesManual
+        let regReportPerYearTotalManuals = regReportPerYearManual
+        let investorsDataRequestsTotalManuals = investorsDataRequestsManual
+        let lendersSBTITotalManuals = lendersSBTIManual
+        let insurerKPIsTotalManuals = insurerKPIsManual
+        let policyCreationTotalManuals = policyCreationManual
+        let promotionalBlogsTotalManuals = promotionalBlogsManual
+        let gernericReportsTotalManuals = gernericReportsManual
+
+
+
+        // Individual Ripples
+        let staff1Ripple = 0.05 * staff1 * 12
+        let staff2Ripple = 0
+        let staff3Ripple = 0.08 * staff3 * 4
+        let locations1Ripple = 0.08 * locations1
+        let locations2Ripple = 0.08 * locations2
+        let suppliers1Ripple = 0.08 * suppliers1
+        let suppliers2Ripple = 0.08 * suppliers2
+        let suppliers3Ripple = 0.08 * suppliers2
+        let suppliers4Ripple = 0.08 * suppliers2
+        let RFP_RFQ_Ripple = 0.08 * suppliers2
+        let vehicle1Ripple = (vehicle1 / 10 * 0.08) * 12
+        let vehicle2Ripple = ((vehicle2 * primaryVehiclesPercentage) * 0.1) * 12
+        let customers1Ripple = 1 * customers1
+        let customers2Ripple = 0.5 * customers2
+        let energyRebateInvoicesRipple = 0
+        let regReportPerYearRipple = regReportPerYear * 20
+        let investorsDataRequestsRipple = investorsDataRequests * 8
+        let lendersSBTIRipple = 0
+        let insurerKPIsRipple = insurerKPIs * 8
+        let policyCreationRipple = policyCreation * 0.5
+        let promotionalBlogsRipple = promotionalBlogs * 0.08 * 12
+        let gernericReportsRipple = 0
+
+
+        // Total Ripples
+        let staffTotalRipples = staff1Ripple + staff2Ripple + staff3Ripple
+        let locationsTotalRipples = locations1Ripple + locations2Ripple
+        let suppliersTotalRipples = suppliers1Ripple + suppliers2Ripple + suppliers3Ripple + suppliers4Ripple
+        let RFP_RFQ_Total_Ripples = RFP_RFQ_Ripple
+        let vehiclesTotalRipples = vehicle1Ripple + vehicle2Ripple
+        let customersTotalRipples = customers1Ripple + customers2Ripple
+        let energyRebateInvoicesTotalRipples = energyRebateInvoicesRipple
+        let regReportPerYearTotalRipples = regReportPerYearRipple
+        let investorsDataRequestsTotalRipples = investorsDataRequestsRipple
+        let lendersSBTITotalRipples = lendersSBTIRipple
+        let insurerKPIsTotalRipples = insurerKPIsRipple
+        let policyCreationTotalRipples = policyCreationRipple
+        let promotionalBlogsTotalRipples = promotionalBlogsRipple
+        let gernericReportsTotalRipples = gernericReportsRipple
+
+
+        let hrsManual = staffTotalManuals +
+            locationsTotalManuals +
+            suppliersTotalManuals +
+            RFP_RFQ_Total_Manuals +
+            vehiclesTotalManuals +
+            customersTotalManuals +
+            energyRebateInvoicesTotalManuals +
+            regReportPerYearTotalManuals +
+            investorsDataRequestsTotalManuals +
+            lendersSBTITotalManuals +
+            insurerKPIsTotalManuals +
+            policyCreationTotalManuals +
+            promotionalBlogsTotalManuals +
+            gernericReportsTotalManuals
+        let daysManual = hrsManual / hoursInADay
+        let FTEsManual = daysManual / daysInFTEYear
+
+        let hrsRipple = staffTotalRipples +
+            locationsTotalRipples +
+            suppliersTotalRipples +
+            RFP_RFQ_Total_Ripples +
+            vehiclesTotalRipples +
+            customersTotalRipples +
+            energyRebateInvoicesTotalRipples +
+            regReportPerYearTotalRipples +
+            investorsDataRequestsTotalRipples +
+            lendersSBTITotalRipples +
+            insurerKPIsTotalRipples +
+            policyCreationTotalRipples +
+            promotionalBlogsTotalRipples +
+            gernericReportsTotalRipples
+        let daysRipple = hrsRipple / hoursInADay
+        let FTEsRipple = daysRipple / daysInFTEYear
+
+        let annualStaffCostsManual = FTEsManual * averageFTESalary
+        let annualStaffCostsRipple = FTEsRipple * averageFTESalary
+
+
+        const v1 = parseInt(document.getElementById("slider1").value) || 0
+        const v2 = parseInt(document.getElementById("slider2").value) || 0
+        const v3 = parseInt(document.getElementById("slider3").value) || 0
+        const v4 = parseInt(document.getElementById("slider4").value) || 0
+
+        const totalSavings = annualStaffCostsManual - annualStaffCostsRipple
+
+        annualSavingsValue.innerText = `£${(Math.floor(totalSavings / 1000) * 1000).toLocaleString()}`
+    }
+
+    window.onload = async function () {
+        await loadExcel();
+
+        updateProgress(document.getElementById('slider1').value, 'bar1');
+        updateProgress(document.getElementById('slider2').value, 'bar2');
+        updateProgress(document.getElementById('slider3').value, 'bar3');
+        updateProgress(document.getElementById('slider4').value, 'bar4');
+
+        document.getElementById('slider1').addEventListener('input', function () {
+            updateProgress(this.value, 'bar1');
+        });
+        document.getElementById('slider2').addEventListener('input', function () {
+            updateProgress(this.value, 'bar2');
+        });
+        document.getElementById('slider3').addEventListener('input', function () {
+            updateProgress(this.value, 'bar3');
+        });
+        document.getElementById('slider4').addEventListener('input', function () {
+            updateProgress(this.value, 'bar4');
+        });
+    };
+
+
+</script>
